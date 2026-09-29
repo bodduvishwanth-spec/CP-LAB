@@ -1,0 +1,40 @@
+import java.util.*;
+
+public class Solution {
+
+    public static List<Integer> countingSort(List<Integer> arr) {
+        int[] count = new int[100];
+
+        for (int num : arr) {
+            count[num]++;
+        }
+
+        List<Integer> sortedList = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            while (count[i] > 0) {
+                sortedList.add(i);
+                count[i]--;
+            }
+        }
+         return sortedList;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        List<Integer> arr = new ArrayList<>();
+
+        for (int i = 0; i < n; i++) {
+            arr.add(sc.nextInt());
+        }
+
+        List<Integer> result = countingSort(arr);
+
+        for (int num : result) {
+            System.out.print(num + " ");
+        }
+
+        sc.close();
+    }
+}
